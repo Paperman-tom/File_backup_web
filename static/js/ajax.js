@@ -6,9 +6,7 @@ $(function () {
         });
 
         let dest_paths = $('#dest_path').find('li').text();
-        //
-        // console.log(ori_paths);
-        // console.log(dest_paths);
+
         $.ajax({
             url: '/backup/many',
             method: 'get',
@@ -26,9 +24,6 @@ $(function () {
         let ori_paths = $('#ori_path').find('li').text();
         let dest_paths = $('#dest_path').find('li').text();
 
-        //
-        // console.log(ori_paths);
-        // console.log(dest_paths);
         $.ajax({
             url: '/restore/decompress',
             method: 'get',
@@ -46,13 +41,9 @@ $(function () {
         let ori_paths = $('#ori_path').find('li').text();
         let dest_paths = $('#dest_path').find('li').text();
 
-
         let password=prompt('请输入密码','');
-
         pwd = md5(password);
-        //
-        // console.log(ori_paths);
-        // console.log(dest_paths);
+
         $.ajax({
             url: '/backup/encryption',
             method: 'post',
@@ -71,13 +62,9 @@ $(function () {
         let ori_paths = $('#ori_path').find('li').text();
         let dest_paths = $('#dest_path').find('li').text();
 
-
         let password=prompt('请输入密码','');
-
         pwd = md5(password);
-        //
-        // console.log(ori_paths);
-        // console.log(dest_paths);
+
         $.ajax({
             url: '/restore/decryption',
             method: 'post',
@@ -96,9 +83,6 @@ $(function () {
         let ori_paths = $('#ori_paths').find('li').text();
         let dest_paths = $('#dest_path').find('li').text();
 
-        //
-        // console.log(ori_paths);
-        // console.log(dest_paths);
         $.ajax({
             url: '/check/check',
             method: 'get',
