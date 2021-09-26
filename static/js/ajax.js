@@ -47,7 +47,7 @@ $(function () {
         let dest_paths = $('#dest_path').find('li').text();
 
 
-        let password=confirm('请输入密码');
+        let password=prompt('请输入密码','');
 
         pwd = md5(password);
         //
@@ -72,7 +72,7 @@ $(function () {
         let dest_paths = $('#dest_path').find('li').text();
 
 
-        let password=confirm('请输入密码');
+        let password=prompt('请输入密码','');
 
         pwd = md5(password);
         //
