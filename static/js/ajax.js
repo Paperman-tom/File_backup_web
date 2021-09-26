@@ -5,10 +5,7 @@ $(function () {
             ori_paths.push($(this).text());
         });
 
-        let dest_paths = [];
-        $('#dest_path').find('li').each(function () {
-            dest_paths.push($(this).text());
-        });
+        let dest_paths = $('#dest_path').find('li').text();
         //
         // console.log(ori_paths);
         // console.log(dest_paths);
@@ -16,8 +13,8 @@ $(function () {
             url: '/backup/many',
             method: 'get',
             data: {
-                destPath: ori_paths,
-                sourcePath: dest_paths,
+                destPath: dest_paths,
+                sourcePath: ori_paths,
             },
             success: function () {
                 alert('成功！')
@@ -26,15 +23,9 @@ $(function () {
     });
 
     $('#decompress').on('click', function () {
-        let ori_paths = [];
-        $('#ori_path').find('li').each(function () {
-            ori_paths.push($(this).text());
-        });
+        let ori_paths = $('#ori_path').find('li').text();
+        let dest_paths = $('#dest_path').find('li').text();
 
-        let dest_paths = [];
-        $('#dest_path').find('li').each(function () {
-            dest_paths.push($(this).text());
-        });
         //
         // console.log(ori_paths);
         // console.log(dest_paths);
@@ -42,8 +33,8 @@ $(function () {
             url: '/restore/decompress',
             method: 'get',
             data: {
-                destPath: ori_paths,
-                sourcePath: dest_paths,
+                destPath: dest_paths,
+                sourcePath: ori_paths,
             },
             success: function () {
                 alert('成功！')
@@ -52,15 +43,9 @@ $(function () {
     });
 
     $('#lock').on('click', function () {
-        let ori_paths = [];
-        $('#ori_path').find('li').each(function () {
-            ori_paths.push($(this).text());
-        });
+        let ori_paths = $('#ori_path').find('li').text();
+        let dest_paths = $('#dest_path').find('li').text();
 
-        let dest_paths = [];
-        $('#dest_path').find('li').each(function () {
-            dest_paths.push($(this).text());
-        });
 
         let password=confirm('请输入密码');
 
@@ -73,8 +58,8 @@ $(function () {
             method: 'post',
             data: {
                 password:pwd,
-                destPath: ori_paths,
-                sourcePath: dest_paths,
+                destPath: dest_paths,
+                sourcePath: ori_paths,
             },
             success: function () {
                 alert('成功！')
@@ -83,15 +68,9 @@ $(function () {
     });
 
     $('#unlock').on('click', function () {
-        let ori_paths = [];
-        $('#ori_path').find('li').each(function () {
-            ori_paths.push($(this).text());
-        });
+        let ori_paths = $('#ori_path').find('li').text();
+        let dest_paths = $('#dest_path').find('li').text();
 
-        let dest_paths = [];
-        $('#dest_path').find('li').each(function () {
-            dest_paths.push($(this).text());
-        });
 
         let password=confirm('请输入密码');
 
@@ -114,15 +93,9 @@ $(function () {
     });
 
     $('#check').on('click', function () {
-        let ori_paths = [];
-        $('#ori_path').find('li').each(function () {
-            ori_paths.push($(this).text());
-        });
+        let ori_paths = $('#ori_paths').find('li').text();
+        let dest_paths = $('#dest_path').find('li').text();
 
-        let dest_paths = [];
-        $('#dest_path').find('li').each(function () {
-            dest_paths.push($(this).text());
-        });
         //
         // console.log(ori_paths);
         // console.log(dest_paths);
@@ -130,8 +103,8 @@ $(function () {
             url: '/check/check',
             method: 'get',
             data: {
-                destPath: ori_paths,
-                sourcePath: dest_paths,
+                destPath: dest_paths,
+                sourcePath: ori_paths,
             },
             success: function () {
                 alert('成功！')
