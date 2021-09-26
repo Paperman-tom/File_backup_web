@@ -6,12 +6,16 @@ $(function () {
         });
 
         let dest_paths = $('#dest_path').find('li').text();
-
+        let filename = prompt('请输入压缩文件名称','');
+        if (! filename){
+            alert('请输入压缩文件名称');
+            return;
+        }
         $.ajax({
             url: '/backup/many',
             method: 'get',
             data: {
-                destPath: dest_paths,
+                destPath: dest_paths+filename,
                 sourcePath: ori_paths,
             },
             success: function () {
@@ -32,7 +36,9 @@ $(function () {
                 sourcePath: ori_paths,
             },
             success: function () {
-                alert('成功！')
+                alert('成功！');
+                $('#ori_path').html('');
+                $('#dest_path').html('');
             }
         })
     });
@@ -53,7 +59,9 @@ $(function () {
                 sourcePath: ori_paths,
             },
             success: function () {
-                alert('成功！')
+                alert('成功！');
+                $('#ori_path').html('');
+                $('#dest_path').html('');
             }
         })
     });
@@ -63,6 +71,10 @@ $(function () {
         let dest_paths = $('#dest_path').find('li').text();
 
         let password = prompt('请输入密码', '');
+        if (!password){
+            alert('请输入密码');
+            return;
+        }
         let pwd = md5(password);
 
         $.ajax({
@@ -74,7 +86,12 @@ $(function () {
                 sourcePath: dest_paths,
             },
             success: function () {
-                alert('成功！')
+                alert('成功！');
+                $('#ori_path').html('');
+                $('#dest_path').html('');
+            },
+            error:function (e) {
+                alert(e);
             }
         })
     });
@@ -91,7 +108,9 @@ $(function () {
                 sourcePath: ori_paths,
             },
             success: function () {
-                alert('成功！')
+                alert('成功！');
+                $('#ori_path').html('');
+                $('#dest_path').html('');
             }
         })
     })
