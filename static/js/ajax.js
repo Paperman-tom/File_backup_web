@@ -41,14 +41,14 @@ $(function () {
         let ori_paths = $('#ori_path').find('li').text();
         let dest_paths = $('#dest_path').find('li').text();
 
-        let password=prompt('请输入密码','');
-        pwd = md5(password);
+        let password = prompt('请输入密码', '');
+        let pwd = md5(password);
 
         $.ajax({
             url: '/backup/encryption',
             method: 'post',
             data: {
-                password:pwd,
+                password: pwd,
                 destPath: dest_paths,
                 sourcePath: ori_paths,
             },
@@ -62,14 +62,14 @@ $(function () {
         let ori_paths = $('#ori_path').find('li').text();
         let dest_paths = $('#dest_path').find('li').text();
 
-        let password=prompt('请输入密码','');
-        pwd = md5(password);
+        let password = prompt('请输入密码', '');
+        let pwd = md5(password);
 
         $.ajax({
             url: '/restore/decryption',
             method: 'post',
             data: {
-                password:pwd,
+                password: pwd,
                 destPath: ori_paths,
                 sourcePath: dest_paths,
             },
