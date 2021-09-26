@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/copy.css">
+    <link rel="icon" href="static/img/icon.png" sizes="32x32">
+</head>
+<body style="margin: 0;">
+<div class="container">
+    <img class="bgbox" id="bgbox" src="https://api.dujin.org/bing/1920.php" style="display: block; opacity: 1">
+    <div class="cover" id="cover" style="opacity: 1"></div>
+    <div id="OptBox">
+        <div class="opts">
+            <span class="clues"> 源目录 </span>
+            <ul class="disabled address listbox" id="ori_path">
+            </ul>
+
+
+            <div class="buttons">
+                <input type="file" id="ori_file" multiple/>
+                <p>选择文件</p>
+                <img class="icon file_btn" src="static/img/ori.png" >
+            </div>
+            <div class="buttons">
+                <!--<input type="file" id="ori_file" webkitdirectory multiple/>-->
+                <p>选择文件夹</p>
+                <img class="icon" src="static/img/ori.png" onclick="browseFolder('ori_path')">
+            </div>
+
+        </div>
+        <div class="opts">
+            <span class="clues"> 目的目录 </span>
+            <ul class="disabled address listbox" id="dest_path">
+            </ul>
+            <div class="buttons">
+                <input type="file" id="dest_file" multiple/>
+                <p>选择文件</p>
+                <img class="icon file_btn" src="static/img/dest.png" >
+            </div>
+            <div class="buttons">
+                <!--<input type="file" id="ori_file" webkitdirectory multiple/>-->
+                <p>选择文件夹</p>
+                <img class="icon" src="static/img/dest.png" onclick="browseFolder('dest_path')">
+            </div>
+        </div>
+        <div class="opts">
+            <div class="buttons">
+                <img class="icon" id='compress' src="static/img/compress.png">
+                <span>压缩</span>
+            </div>
+            <div class="buttons">
+                <img class="icon" id='decompress' src="static/img/decompress.png">
+                <span>解压</span>
+            </div>
+            <div class="buttons">
+                <img class="icon" id="lock" src="static/img/lock.png">
+                <span>加密</span>
+            </div>
+            <div class="buttons">
+                <img class="icon" id="unlock" src="static/img/unlock.png">
+                <span>解密</span>
+            </div>
+            <div class="buttons">
+                <img class="icon" id='check' src="static/img/check.png">
+                <span>校验</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="welcome">
+        <h1 id="timer">
+        </h1>
+    </div>
+    <div class="list">
+
+    </div>
+</div>
+<script src="./static/js/lib/jquery-2.2.3.js"></script>
+
+<script src="./static/js/main.js"></script>
+<script src="./static/js/ajax.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script type="text/javascript">
+    function browseFolder(output) {
+        try {
+            var Message = "请选择路径";  //选择框提示信息
+            var Shell = new ActiveXObject("Shell.Application");
+            var Folder = Shell.BrowseForFolder(0, Message, 64, 17);//起始目录为：我的电脑
+            var out = document.getElementById(output);
+
+            if (Folder != null) {
+                Folder = Folder.items();  // 返回 FolderItems 对象
+                Folder = Folder.item();  // 返回 Folderitem 对象
+                Folder = Folder.Path;   // 返回路径
+                if (Folder.charAt(Folder.length - 1) != "\\") {
+                    Folder = Folder + "\\";
+                }
+                var item = document.createElement("li");
+                item.innerHTML = Folder;
+                out.appendChild(item);
+                return Folder;
+            }
+        } catch
+            (e) {
+            alert(e.message);
+        }
+    };
+
+</script>
+
+</body>
+</html>

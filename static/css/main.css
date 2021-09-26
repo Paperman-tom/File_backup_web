@@ -1,0 +1,125 @@
+div{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+li{
+    text-align: left;
+}
+.icon{
+    margin: 5px;
+}
+.focus{
+    filter: blur(8px);
+    transform: scale(1.1);
+}
+
+.bgbox{
+    z-index: -3;
+    position: fixed;
+    object-fit: cover;
+    transition: opacity 1s,transform .25s,filter .25s;
+    backface-visibility: hidden;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cover{
+    z-index: -1;
+    background-image: radial-gradient(rgba(0,0,0,0) 0,rgba(0,0,0,.5) 100%),radial-gradient(rgba(0,0,0,0) 33%,rgba(0,0,0,.3) 166%);
+    transition: .25s;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.welcome{
+    position: fixed;
+    top: 115px;
+    left: calc(50% - 100px);
+    width: 200px;
+    text-align: center;
+    transition: .25s;
+}
+
+#timer {
+    color: #fff;
+    font-size: 36px;
+    font-weight: inherit;
+    text-shadow: 0 0 20px rgb(0 0 0 / 35%);
+    cursor: pointer;
+    transition: .25s;
+    line-height: 20px;
+    animation-name: delayedFadeIn;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+}
+
+#OptBox {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    margin-left: -25%;
+    width: 50%;
+    text-align: center;
+    transition: .25s
+}
+.opts{
+    display: flex;
+    height: auto;
+    margin: 5px 15px;
+}
+
+.address{
+    margin: auto 5px;
+    height: 80%;
+    width: 80%;
+    border-radius: 40px;
+    border: #a0a0a0 solid;
+}
+.listbox{
+    text-align: center;
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 18px;
+    min-height: 150px;
+    background-color: darkgray;
+}
+.buttons {
+    height: auto;
+    width: 200px;
+    position: relative;
+    padding: 5px 15px;
+    margin-left: 5px;
+    margin-right: 10px;
+    background-color: var(--w-alpha-10);
+    border-radius: 20px;
+    transition: .25s;
+    cursor: pointer;
+    color: white;
+    font-size: 13px;
+}
+
+.buttons:hover {
+    background-color: var(--w-alpha-20)
+}
+
+.buttons:active {
+    background-color: var(--theme-color)
+}
+
+.buttons.selected {
+    background-color: var(--w-alpha-30)
+}
+
+.clues{
+    width: 20px;
+    color: white;
+    bottom: -100%;
+    margin: 0 10px -100% 10px;
+
+}
