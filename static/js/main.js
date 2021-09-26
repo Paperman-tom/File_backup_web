@@ -1,3 +1,7 @@
+var del_li = function(){
+    $(event.target).parent().remove();
+};
+
 $(function () {
     function showTime() {
         let time = new Date();
@@ -23,6 +27,7 @@ $(function () {
         $(this).prevAll("input").click();
     });
 
+
     document.getElementById("ori_file").addEventListener("change", function (event) {
         let output = document.getElementById("ori_path");
         let file = $(this).val();
@@ -30,7 +35,7 @@ $(function () {
         let files=file.split(',');
         for (let i=0; i<files.length; i++){
             let item = document.createElement("li");
-            item.innerHTML = files[i].replace(/(^\s*)/g, "");
+            item.innerHTML = "<a onclick\= \'del_li()\'>del </a>" +'\n' + files[i].replace(/(^\s*)/g, "");
             output.appendChild(item);
         }
 

@@ -1,4 +1,5 @@
 $(function () {
+
     $('#compress').on('click', function () {
         let ori_paths = [];
         $('#ori_path').find('li').each(function () {
@@ -6,8 +7,8 @@ $(function () {
         });
 
         let dest_paths = $('#dest_path').find('li').text();
-        let filename = prompt('请输入压缩文件名称','');
-        if (! filename){
+        let filename = prompt('请输入压缩文件名称', '');
+        if (!filename) {
             alert('请输入压缩文件名称');
             return;
         }
@@ -15,11 +16,13 @@ $(function () {
             url: '/backup/many',
             method: 'get',
             data: {
-                destPath: dest_paths+filename,
+                destPath: dest_paths + filename,
                 sourcePath: ori_paths,
             },
             success: function () {
-                alert('成功！')
+                alert('成功！');
+                $('#ori_path').html('');
+                $('#dest_path').html('');
             }
         })
     });
@@ -48,14 +51,19 @@ $(function () {
         let dest_paths = $('#dest_path').find('li').text();
 
         let password = prompt('请输入密码', '');
-        let pwd = md5(password);
+        let pwd = password;
 
+        let filename = prompt('请输入压缩文件名称', '');
+        if (!filename) {
+            alert('请输入压缩文件名称');
+            return;
+        }
         $.ajax({
             url: '/backup/encryption',
             method: 'post',
             data: {
                 password: pwd,
-                destPath: dest_paths,
+                destPath: dest_paths+filename,
                 sourcePath: ori_paths,
             },
             success: function () {
@@ -71,26 +79,30 @@ $(function () {
         let dest_paths = $('#dest_path').find('li').text();
 
         let password = prompt('请输入密码', '');
-        if (!password){
+        if (!password) {
             alert('请输入密码');
             return;
         }
-        let pwd = md5(password);
-
+        let pwd = password;
+        let filename = prompt('请输入压缩文件名称', '');
+        if (!filename) {
+            alert('请输入压缩文件名称');
+            return;
+        }
         $.ajax({
             url: '/restore/decryption',
             method: 'post',
             data: {
                 password: pwd,
-                destPath: ori_paths,
-                sourcePath: dest_paths,
+                destPath: dest_paths+filename,
+                sourcePath: ori_paths,
             },
             success: function () {
                 alert('成功！');
                 $('#ori_path').html('');
                 $('#dest_path').html('');
             },
-            error:function (e) {
+            error: function (e) {
                 alert(e);
             }
         })
@@ -104,11 +116,11 @@ $(function () {
             url: '/check/check',
             method: 'get',
             data: {
-                destPath: dest_paths,
-                sourcePath: ori_paths,
+                path2: dest_paths,
+                path1: ori_paths,
             },
-            success: function () {
-                alert('成功！');
+            success: function (msg) {
+                alert(msg);
                 $('#ori_path').html('');
                 $('#dest_path').html('');
             }
