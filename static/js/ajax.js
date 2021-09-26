@@ -5,7 +5,7 @@ $(function () {
         $('#ori_path').find('li').each(function () {
             ori_paths.push($(this).text());
         });
-
+        console.log(ori_paths);
         let dest_paths = $('#dest_path').find('li').text();
         let filename = prompt('请输入压缩文件名称', '');
         if (!filename) {
@@ -21,8 +21,7 @@ $(function () {
             },
             success: function () {
                 alert('成功！');
-                $('#ori_path').html('');
-                $('#dest_path').html('');
+                window.location.reload();
             }
         })
     });
@@ -40,8 +39,7 @@ $(function () {
             },
             success: function () {
                 alert('成功！');
-                $('#ori_path').html('');
-                $('#dest_path').html('');
+                window.location.reload();
             }
         })
     });
@@ -63,13 +61,12 @@ $(function () {
             method: 'post',
             data: {
                 password: pwd,
-                destPath: dest_paths+filename,
+                destPath: dest_paths + filename,
                 sourcePath: ori_paths,
             },
             success: function () {
                 alert('成功！');
-                $('#ori_path').html('');
-                $('#dest_path').html('');
+                window.location.reload();
             }
         })
     });
@@ -94,13 +91,12 @@ $(function () {
             method: 'post',
             data: {
                 password: pwd,
-                destPath: dest_paths+filename,
+                destPath: dest_paths + filename,
                 sourcePath: ori_paths,
             },
             success: function () {
                 alert('成功！');
-                $('#ori_path').html('');
-                $('#dest_path').html('');
+                window.location.reload();
             },
             error: function (e) {
                 alert(e);
@@ -121,8 +117,7 @@ $(function () {
             },
             success: function (msg) {
                 alert(msg);
-                $('#ori_path').html('');
-                $('#dest_path').html('');
+                window.location.reload();
             }
         })
     })
